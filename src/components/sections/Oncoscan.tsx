@@ -60,7 +60,7 @@ function InfoTabs() {
   const [i, setI] = useState(0);
   return (
     <div data-dark className="grid gap-2 rounded-panel bg-ink p-3 text-white md:grid-cols-[250px_1fr]">
-      <div role="tablist" aria-label="Detalhes do OncoScan" className="grid grid-cols-2 gap-1 md:flex md:flex-col">
+      <div role="tablist" aria-label="Detalhes do OncoScan" className="grid grid-cols-2 gap-2 md:flex md:flex-col md:gap-1">
         {infoTabs.map((tab, n) => {
           const on = n === i;
           return (
@@ -71,7 +71,7 @@ function InfoTabs() {
               aria-selected={on}
               onClick={() => setI(n)}
               className={`relative flex min-h-12 shrink-0 cursor-pointer items-center gap-3 rounded-xl px-4 text-left text-[1rem] font-medium transition-colors duration-300 md:min-h-14 ${
-                on ? "text-ink" : "text-white/65 hover:text-white"
+                on ? "text-ink" : "text-white/65 hover:text-white max-md:bg-white/10 max-md:text-white"
               }`}
             >
               {on && (
@@ -128,7 +128,7 @@ function Comparador() {
   const [i, setI] = useState(0);
   return (
     <div className="rounded-panel bg-paper p-3">
-      <div role="tablist" aria-label="Critério de comparação" className="grid grid-cols-2 gap-1 md:flex md:flex-wrap">
+      <div role="tablist" aria-label="Critério de comparação" className="grid grid-cols-2 gap-2 md:flex md:flex-wrap md:gap-1">
         {ihcRna.map((r, n) => (
           <button
             key={r.item}
@@ -136,7 +136,11 @@ function Comparador() {
             role="tab"
             aria-selected={n === i}
             onClick={() => setI(n)}
-            className={`${pill} ${n === i ? "text-white" : "text-mute hover:text-ink"}`}
+            className={`${pill} ${
+              n === i
+                ? "text-white"
+                : "text-mute hover:text-ink max-md:border max-md:border-line max-md:bg-white max-md:text-ink max-md:shadow-[0_2px_8px_rgb(27_18_61/0.06)]"
+            }`}
           >
             {n === i && (
               <motion.span

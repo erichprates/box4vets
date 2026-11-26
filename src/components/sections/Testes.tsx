@@ -132,7 +132,7 @@ export function Doencas() {
             <div
               role="tablist"
               aria-label="Painéis genéticos"
-              className="grid grid-cols-2 gap-1.5 lg:flex lg:flex-col lg:p-2"
+              className="grid grid-cols-2 gap-2 lg:flex lg:flex-col lg:gap-1.5 lg:p-2"
             >
               {grupos.map((g) => (
                 <div key={g.id} className="contents lg:flex lg:flex-col lg:gap-1.5 lg:not-first:mt-5">
@@ -154,7 +154,7 @@ export function Doencas() {
                           aria-selected={on}
                           onClick={() => setId(p.id)}
                           className={`relative flex min-h-14 cursor-pointer items-center gap-2 rounded-2xl px-3 py-2 text-left transition-colors duration-300 lg:gap-3 ${
-                            on ? "text-white" : "text-ink hover:bg-white"
+                            on ? "text-white" : "text-ink hover:bg-white max-lg:bg-white max-lg:shadow-[0_2px_8px_rgb(27_18_61/0.06)]"
                           }`}
                         >
                           {on && (
@@ -176,7 +176,7 @@ export function Doencas() {
                           </span>
                           <span
                             className={`relative rounded-full px-2 py-1 text-[0.75rem] whitespace-nowrap tabular-nums lg:px-2.5 lg:text-[0.8125rem] ${
-                              on ? "bg-white/15" : "bg-white text-mute"
+                              on ? "bg-white/15" : "bg-white text-mute max-lg:bg-paper"
                             }`}
                           >
                             {p.condicoes.length}

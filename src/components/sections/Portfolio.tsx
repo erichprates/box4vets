@@ -46,7 +46,7 @@ export function Portfolio() {
             <div
               role="group"
               aria-label="Filtrar por categoria"
-              className="flex max-w-full flex-wrap gap-1 rounded-3xl border border-line bg-white p-1 md:rounded-full"
+              className="flex max-w-full flex-wrap gap-2 md:gap-1 md:rounded-full md:border md:border-line md:bg-white md:p-1"
             >
               {filtros.map((f) => {
                 const on = f === filtro;
@@ -58,7 +58,7 @@ export function Portfolio() {
                     aria-pressed={on}
                     onClick={() => setFiltro(f)}
                     className={`relative min-h-11 shrink-0 cursor-pointer rounded-full px-4 text-[0.9375rem] font-medium transition-colors duration-300 ${
-                      on ? "text-white" : "text-mute hover:text-ink"
+                      on ? "text-white" : "text-mute hover:text-ink max-md:border max-md:border-line max-md:bg-white max-md:text-ink max-md:shadow-[0_2px_8px_rgb(27_18_61/0.06)]"
                     }`}
                   >
                     {on && (

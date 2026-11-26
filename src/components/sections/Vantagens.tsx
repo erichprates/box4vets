@@ -127,7 +127,7 @@ export function Vantagens() {
                     aria-selected={on}
                     onClick={() => setI(n)}
                     className={`relative flex min-h-16 cursor-pointer items-center gap-4 rounded-2xl px-3 text-left transition-colors duration-300 ${
-                      on ? "text-ink" : "text-white/70 hover:text-white"
+                      on ? "text-ink" : "text-white/70 hover:text-white max-lg:bg-white/[0.07] max-lg:text-white"
                     }`}
                   >
                     {on && (

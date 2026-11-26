@@ -135,8 +135,8 @@ O roxo e o ciano são os do logo (`public/logo.svg`).
 - Todo o conteúdo até os botões cabe na primeira dobra no desktop.
 - O box mostra o vídeo da coleta (recortado para tirar o logo "box4dog" do canto), sem
   moldura; chega inclinado em perspectiva e levanta com a rolagem.
-- No celular o box já aparece na primeira dobra, e o parágrafo vem depois dele, como frase
-  de destaque e três pontos numerados.
+- O parágrafo de apoio vem **depois do box**, no desktop e no celular, como frase de destaque
+  e três pontos numerados. Sem ele na dobra, o box sobe e já aparece na primeira tela.
 
 ### Menos texto, mais descoberta
 - Parágrafos de Inovação acendem palavra por palavra.
@@ -250,3 +250,5 @@ na prévia.
 - Versão de celular revista: hero, margens laterais, abas em grade, tabela em cartões.
 - SEO básico e conteúdo das abas no HTML.
 - Código publicado no GitHub e prévia no GitHub Pages.
+- Hero: parágrafo movido para baixo do box também no desktop; box mais alto na dobra.
+- Criado o site irmão Box4Pets Criador (`../box4pets_criador`) a partir desta base.

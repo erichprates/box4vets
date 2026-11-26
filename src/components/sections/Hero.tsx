@@ -138,7 +138,7 @@ export function Hero() {
         <div className="container-page relative flex flex-col items-center text-center">
 
           {/* Tudo ate os botoes cabe na primeira dobra, centralizado na altura da tela. */}
-          <div className="flex w-full flex-col items-center pb-6 md:min-h-[calc(100svh-120px)] md:justify-center md:pb-[6vh]">
+          <div className="flex w-full flex-col items-center pb-6 md:min-h-[calc(84svh-120px)] md:justify-center md:pb-[4vh]">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -173,17 +173,6 @@ export function Hero() {
               { text: "Em qualquer cidade do Brasil.", className: "mt-[0.5em] text-[0.58em] font-light tracking-[-0.02em] text-ciano-200" },
             ]}
           />
-
-          <motion.p
-            className="mt-[2.6vh] max-w-[640px] text-[1.125rem] leading-relaxed text-white/90 max-md:hidden"
-            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.9, ease: ease.out, delay: 0.85 }}
-          >
-            Identifique o risco de desenvolvimento de doenças, confirme diagnósticos difíceis e faça
-            escolhas precisas das terapias oncológicas com base no DNA do paciente. Coleta simples,
-            requisição online e laudo com suporte especializado.
-          </motion.p>
 
           <motion.div
             className="mt-6 flex w-full flex-wrap items-center justify-center gap-3 md:mt-[3.4vh]"
@@ -270,10 +259,10 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* So no celular: o texto vem depois do video, em frase curta + tres pontos, e os outros atalhos. */}
-          <div className="mt-14 flex w-full flex-col gap-8 px-3 pb-4 text-left md:hidden">
+          {/* O texto vem depois do video: frase de destaque + tres pontos. No celular, tambem os outros atalhos. */}
+          <div className="mt-14 flex w-full max-w-[1080px] flex-col gap-8 px-3 pb-4 text-left md:mt-20 md:grid md:grid-cols-[1.25fr_1fr] md:items-center md:gap-16 md:px-0 md:pb-10">
             <FadeUp>
-              <p className="display text-[1.3125rem] leading-[1.35] text-white">
+              <p className="display text-[1.3125rem] leading-[1.35] text-white md:text-[1.75rem] md:leading-[1.3]">
                 Identifique o risco de desenvolvimento de doenças, confirme diagnósticos difíceis e faça
                 escolhas precisas das terapias oncológicas com base no DNA do paciente.
               </p>
@@ -288,7 +277,7 @@ export function Hero() {
                 ))}
               </ul>
             </FadeUp>
-            <FadeUp delay={0.15}>
+            <FadeUp delay={0.15} className="md:hidden">
               <div className="flex flex-col gap-3">
                 <SplitButton href={links.exame} variant="outline" className="w-full justify-between">
                   Resultado de exames

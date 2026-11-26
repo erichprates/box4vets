@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/*
+ * DESIGN SYSTEM BOX4VETS
+ * Base branca, paineis arredondados com degrade roxo, titulos Poppins em caixa mista.
+ */
+
+@theme inline {
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  --color-roxo: #3f2f80; /* cor da marca: paineis, botoes */
+  --color-roxo-700: #322568;
+  --color-roxo-400: #7c6bd0;
+  --color-ink: #1b123d; /* texto e secoes escuras */
+  --color-mute: #5f6474; /* texto secundario */
+  --color-paper: #f5f4fa; /* fundo alternativo */
+  --color-lilas: #ebe7f8; /* chips e blocos suaves */
+  --color-line: #e4e0f0;
+  --color-ciano: #00acc8; /* acento da marca */
+  --color-ciano-700: #00829a; /* acento sobre fundo claro */
+  --color-ciano-200: #8fe3f2; /* acento sobre roxo */
+  --color-laranja: #c2570c;
+
+  --text-hero: clamp(2.35rem, 5.1vw, 4.5rem);
+  --text-display: clamp(2rem, 3.9vw, 3.5rem);
+  --text-title: clamp(1.6rem, 2.4vw, 2.25rem);
+
+  --radius-panel: 1.75rem;
+  --radius-card: 1.25rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-orbit: orbit var(--orbit-duration, 60s) linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-marquee: marquee var(--marquee-duration, 36s) linear infinite;
+
+  @keyframes orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+html {
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-roxo);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ciano);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+/* Conteudo centralizado, com margem lateral fluida. */
+@utility container-page {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+/* Painel arredondado que quase encosta nas bordas da tela (ref. Curenast). */
+@utility panel {
+  margin-inline: clamp(0.5rem, 1vw, 0.875rem);
+  border-radius: var(--radius-panel);
+  position: relative;
+  overflow: clip;
+}
+
+@utility grad-hero {
+  background: linear-gradient(180deg, #fff 0%, #f3f0fc 26%, #c6bcee 58%, #6a56bd 84%, #3f2f80 100%);
+}
+
+@utility grad-soft {
+  background: linear-gradient(180deg, #fff 0%, #f1eefb 45%, #d9d2f4 100%);
+}
+
+@utility grad-card {
+  background: linear-gradient(180deg, #8e7fdc 0%, #cfc7f3 62%, #fff 100%);
+}
+
+/* Orbitas: o anel gira e cada item gira ao contrario para ficar em pe. */
+.orbit {
+  animation: var(--animate-orbit);
+}
+.orbit-item {
+  animation: var(--animate-orbit);
+  animation-direction: reverse;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit,
+  .orbit-item,
+  .animate-float,
+  .animate-marquee {
+    animation: none !important;
+  }
+}

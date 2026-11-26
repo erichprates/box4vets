@@ -49,7 +49,8 @@ const infoTabs = [
   },
 ];
 
-const pill = "relative min-h-11 shrink-0 cursor-pointer rounded-full px-4 text-[0.9375rem] font-medium transition-colors duration-300";
+const pill =
+  "relative min-h-11 cursor-pointer rounded-2xl px-3 py-2 text-[0.8125rem] leading-tight font-medium transition-colors duration-300 md:rounded-full md:px-4 md:text-[0.9375rem]";
 
 /**
  * Amostra, envio, liberacao e evidencia. As abas ficam em coluna a esquerda e ja dizem o
@@ -59,7 +60,7 @@ function InfoTabs() {
   const [i, setI] = useState(0);
   return (
     <div data-dark className="grid gap-2 rounded-panel bg-ink p-3 text-white md:grid-cols-[250px_1fr]">
-      <div role="tablist" aria-label="Detalhes do OncoScan" className="no-scrollbar flex gap-1 overflow-x-auto md:flex-col">
+      <div role="tablist" aria-label="Detalhes do OncoScan" className="grid grid-cols-2 gap-1 md:flex md:flex-col">
         {infoTabs.map((tab, n) => {
           const on = n === i;
           return (
@@ -127,7 +128,7 @@ function Comparador() {
   const [i, setI] = useState(0);
   return (
     <div className="rounded-panel bg-paper p-3">
-      <div role="tablist" aria-label="Critério de comparação" className="no-scrollbar flex gap-1 overflow-x-auto">
+      <div role="tablist" aria-label="Critério de comparação" className="grid grid-cols-2 gap-1 md:flex md:flex-wrap">
         {ihcRna.map((r, n) => (
           <button
             key={r.item}
@@ -140,7 +141,7 @@ function Comparador() {
             {n === i && (
               <motion.span
                 layoutId="ihc-aba"
-                className="pointer-events-none absolute inset-0 rounded-full bg-ink"
+                className="pointer-events-none absolute inset-0 rounded-2xl bg-ink md:rounded-full"
                 transition={{ type: "spring", stiffness: 380, damping: 32 }}
               />
             )}

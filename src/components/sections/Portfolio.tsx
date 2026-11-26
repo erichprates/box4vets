@@ -16,6 +16,10 @@ const chip: Record<Categoria, string> = {
   Precisão: "bg-roxo text-white",
 };
 
+/** Celula de dado: no celular vira uma linha "rotulo ........ valor". */
+const celula =
+  "px-5 py-4 max-md:flex max-md:justify-between max-md:gap-6 max-md:border-t max-md:border-line/70 max-md:px-0 max-md:py-2 max-md:text-right max-md:text-[0.875rem] max-md:before:shrink-0 max-md:before:text-left max-md:before:font-normal max-md:before:text-mute max-md:before:content-[attr(data-label)]";
+
 const filtros: ("Todos" | Categoria)[] = ["Todos", "Preditiva", "Diagnóstico", "Prognóstico", "Precisão"];
 
 /** Tabela do portfolio com filtro por categoria. */
@@ -42,7 +46,7 @@ export function Portfolio() {
             <div
               role="group"
               aria-label="Filtrar por categoria"
-              className="no-scrollbar flex max-w-full gap-1 overflow-x-auto rounded-full border border-line bg-white p-1"
+              className="flex max-w-full flex-wrap gap-1 rounded-3xl border border-line bg-white p-1 md:rounded-full"
             >
               {filtros.map((f) => {
                 const on = f === filtro;
@@ -75,9 +79,10 @@ export function Portfolio() {
         </div>
 
         <FadeUp className="mt-10">
-          <div className="no-scrollbar overflow-x-auto rounded-panel border border-line bg-white">
-            <table className="w-full min-w-[820px] border-collapse text-left text-[0.9375rem]">
-              <thead>
+          <div className="no-scrollbar rounded-panel border border-line bg-white max-md:overflow-hidden md:overflow-x-auto">
+            <table className="w-full border-collapse text-left text-[0.9375rem] max-md:block md:min-w-[820px]">
+              {/* No celular cada exame vira um cartao; o cabecalho some e cada dado leva o proprio rotulo. */}
+              <thead className="max-md:hidden">
                 <tr className="bg-roxo text-white">
                   {["Categoria", "Exame", "Espécie", "Amostra", "Prazo"].map((h) => (
                     <th key={h} scope="col" className="px-5 py-4 font-medium">
@@ -86,24 +91,24 @@ export function Portfolio() {
                   ))}
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="max-md:block">
                   {portfolio.map((r, i) => {
                     const on = visivel(r, i);
                     return (
                     <motion.tr
                       key={r.exame}
                       hidden={!on}
-                      className="group border-t border-line transition-colors duration-300 hover:bg-paper"
+                      className="group border-t border-line transition-colors duration-300 first:border-0 hover:bg-paper max-md:block max-md:px-5 max-md:py-5"
                       initial={false}
                       animate={on ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
                       transition={{ duration: on ? 0.45 : 0, ease: ease.out }}
                     >
-                      <td className="px-5 py-4">
+                      <td className="px-5 py-4 max-md:block max-md:p-0">
                         <span className={`rounded-full px-2.5 py-1 text-[0.8125rem] font-semibold ${chip[r.categoria]}`}>
                           {r.categoria}
                         </span>
                       </td>
-                      <td className="px-5 py-4">
+                      <td className="px-5 py-4 max-md:block max-md:px-0 max-md:pt-3 max-md:pb-2 max-md:text-[1.0625rem]">
                         <span className="font-semibold text-ink">{r.exame}</span>
                         {r.novo && (
                           <span className="ml-2 rounded-full bg-ciano px-2 py-0.5 text-[0.6875rem] font-semibold text-ink">
@@ -112,9 +117,9 @@ export function Portfolio() {
                         )}
                         {r.nota && <span className="mt-0.5 block text-[0.8125rem] text-mute">{r.nota}</span>}
                       </td>
-                      <td className="px-5 py-4 whitespace-nowrap text-mute">{r.especie}</td>
-                      <td className="px-5 py-4 text-mute">{r.amostra}</td>
-                      <td className="px-5 py-4 font-medium whitespace-nowrap text-ink">{r.prazo}</td>
+                      <td data-label="Espécie" className={`${celula} text-mute md:whitespace-nowrap`}>{r.especie}</td>
+                      <td data-label="Amostra" className={`${celula} text-mute`}>{r.amostra}</td>
+                      <td data-label="Prazo" className={`${celula} font-medium text-ink md:whitespace-nowrap`}>{r.prazo}</td>
                     </motion.tr>
                     );
                   })}

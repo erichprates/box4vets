@@ -45,33 +45,61 @@ export function Hero() {
   const logoScale = useTransform(scrollY, [0, 150], [1, 0.6]);
   const video = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
+  // Tempo do video pedido pela rolagem, e a funcao que leva o video ate ele.
+  const alvo = useRef(START);
+  const aplicar = useRef<() => void>(() => undefined);
   // O video segue a rolagem com uma pequena inercia, em vez de pular a cada evento.
   const smooth = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.35 });
 
   useEffect(() => {
     const v = video.current;
     if (!v) return;
-    // No iPhone o video so carrega os quadros depois de tocar uma vez: toca e pausa na hora.
-    const prime = () =>
+    v.muted = true;
+    v.defaultMuted = true;
+    /*
+     * No celular (iPhone principalmente) o video nao carrega quadro nenhum ate tocar uma vez,
+     * e o evento de "carregou" nem dispara antes disso. Entao: manda tocar ja, pausa na hora
+     * e posiciona. Se o aparelho recusar (modo de economia de bateria), tenta de novo no
+     * primeiro toque na tela.
+     */
+    let ok = false;
+    const prime = () => {
+      if (ok) return;
       void v
         .play()
         .then(() => {
+          ok = true;
           v.pause();
-          if (v.currentTime < START) v.currentTime = START;
+          setReady(true);
+          seek();
         })
         .catch(() => undefined);
-    if (v.readyState >= 2) {
-      setReady(true);
-      prime();
-    } else v.addEventListener("loadeddata", prime, { once: true });
-    return () => v.removeEventListener("loadeddata", prime);
+    };
+    // Procura um quadro por vez: pedir outro antes do anterior chegar trava o video no celular.
+    const seek = () => {
+      if (!ok || v.seeking || !v.duration) return;
+      const t = Math.min(v.duration - 0.05, alvo.current);
+      if (Math.abs(v.currentTime - t) > 0.03) v.currentTime = t;
+    };
+    aplicar.current = seek;
+    v.addEventListener("seeked", seek);
+    v.addEventListener("loadeddata", prime);
+    window.addEventListener("touchstart", prime, { passive: true });
+    v.load();
+    prime();
+    return () => {
+      v.removeEventListener("seeked", seek);
+      v.removeEventListener("loadeddata", prime);
+      window.removeEventListener("touchstart", prime);
+    };
   }, []);
 
   useMotionValueEvent(smooth, "change", (p) => {
     const v = video.current;
-    if (!v || reduced || !v.duration) return;
-    const t = Math.min(v.duration - 0.05, START + Math.max(0, p) * (v.duration - START));
-    if (Math.abs(v.currentTime - t) > 0.02) v.currentTime = t;
+    if (!v || reduced) return;
+    const d = v.duration || 12;
+    alvo.current = START + Math.max(0, p) * (d - START);
+    aplicar.current();
   });
 
   return (

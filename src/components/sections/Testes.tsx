@@ -132,10 +132,10 @@ export function Doencas() {
             <div
               role="tablist"
               aria-label="Painéis genéticos"
-              className="no-scrollbar flex gap-2 overflow-x-auto lg:flex-col lg:gap-1.5 lg:overflow-visible lg:p-2"
+              className="grid grid-cols-2 gap-1.5 lg:flex lg:flex-col lg:p-2"
             >
               {grupos.map((g) => (
-                <div key={g.id} className="flex gap-2 lg:flex-col lg:gap-1.5 lg:not-first:mt-5">
+                <div key={g.id} className="contents lg:flex lg:flex-col lg:gap-1.5 lg:not-first:mt-5">
                   <h4 className="hidden items-center gap-2.5 px-2 pb-2 text-[1.0625rem] font-semibold text-ink lg:flex">
                     <span className={`rounded-full px-2.5 py-1 text-[0.75rem] font-semibold ${g.tone}`}>
                       {g.tag}
@@ -153,7 +153,7 @@ export function Doencas() {
                           role="tab"
                           aria-selected={on}
                           onClick={() => setId(p.id)}
-                          className={`relative flex min-h-14 shrink-0 cursor-pointer items-center gap-3 rounded-2xl px-3 py-2 text-left transition-colors duration-300 ${
+                          className={`relative flex min-h-14 cursor-pointer items-center gap-2 rounded-2xl px-3 py-2 text-left transition-colors duration-300 lg:gap-3 ${
                             on ? "text-white" : "text-ink hover:bg-white"
                           }`}
                         >
@@ -165,15 +165,17 @@ export function Doencas() {
                             />
                           )}
                           <span
-                            className={`relative grid size-10 shrink-0 place-items-center rounded-full transition-colors duration-300 ${
+                            className={`relative grid size-10 shrink-0 place-items-center rounded-full transition-colors duration-300 max-lg:hidden ${
                               on ? "bg-white/15" : "bg-white text-roxo"
                             }`}
                           >
                             <Icon name={p.icon} size={20} />
                           </span>
-                          <span className="relative flex-1 font-medium whitespace-nowrap">{p.nome}</span>
+                          <span className="relative flex-1 font-medium max-lg:text-[0.875rem] max-lg:leading-tight lg:whitespace-nowrap">
+                            {p.nome}
+                          </span>
                           <span
-                            className={`relative rounded-full px-2.5 py-1 text-[0.8125rem] whitespace-nowrap tabular-nums ${
+                            className={`relative rounded-full px-2 py-1 text-[0.75rem] whitespace-nowrap tabular-nums lg:px-2.5 lg:text-[0.8125rem] ${
                               on ? "bg-white/15" : "bg-white text-mute"
                             }`}
                           >

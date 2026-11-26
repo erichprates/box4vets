@@ -91,8 +91,8 @@ export function Vantagens() {
   return (
     <section data-dark className="panel bg-ink py-24 text-white md:py-36">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-40 size-[560px] rounded-full bg-roxo/70 blur-[130px]" />
-        <div className="absolute -right-40 bottom-0 size-[460px] rounded-full bg-ciano/20 blur-[130px]" />
+        <div className="absolute -top-72 -left-72 size-[900px] bg-[radial-gradient(closest-side,rgb(63_47_128/0.75),transparent)]" />
+        <div className="absolute -right-72 -bottom-40 size-[760px] bg-[radial-gradient(closest-side,rgb(0_172_200/0.2),transparent)]" />
         <div className="absolute top-1/2 -left-[20%] aspect-square w-[70%] -translate-y-1/2 rounded-full border border-white/[0.07]" />
         <div className="absolute top-1/2 -left-[10%] aspect-square w-[50%] -translate-y-1/2 rounded-full border border-white/[0.07]" />
       </div>
@@ -157,7 +157,7 @@ export function Vantagens() {
         <FadeUp delay={0.1}>
           <div
             role="tabpanel"
-            className="relative flex h-full min-h-[460px] flex-col overflow-hidden rounded-panel border border-white/12 bg-white/[0.06] p-7 backdrop-blur md:p-11"
+            className="relative grid h-full min-h-[460px] overflow-hidden rounded-panel border border-white/12 bg-white/[0.06] p-7 md:p-11"
           >
             {/* As quatro listas ficam escritas na pagina (bom para buscadores); so a escolhida aparece. */}
             {vantagens.map((v, n) => {
@@ -165,8 +165,8 @@ export function Vantagens() {
               return (
               <motion.div
                 key={v.titulo}
-                hidden={!on}
-                className="flex flex-1 flex-col"
+                aria-hidden={!on}
+                className={`col-start-1 row-start-1 flex flex-col ${on ? "" : "pointer-events-none invisible"}`}
                 initial={false}
                 animate={{ opacity: on ? 1 : 0 }}
                 transition={{ duration: 0.35 }}
@@ -177,6 +177,7 @@ export function Vantagens() {
                   initial={false}
                   animate={on ? { scale: 1, rotate: 0 } : { scale: 0.6, rotate: -20 }}
                   transition={{ duration: on ? 0.9 : 0, ease: ease.out }}
+                  style={{ visibility: on ? "visible" : "hidden" }}
                 >
                   <Icon name={v.icon} size={300} strokeWidth={0.8} />
                 </motion.span>

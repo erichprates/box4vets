@@ -88,8 +88,8 @@ export function Contato({ base = "" }: { base?: string }) {
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute top-[8%] left-1/2 aspect-square w-[150%] -translate-x-1/2 rounded-full border border-white/10 bg-white/[0.03]" />
           <div className="absolute top-[22%] left-1/2 aspect-square w-[110%] -translate-x-1/2 rounded-full border border-white/10 bg-white/[0.03]" />
-          <div className="absolute -top-32 right-0 size-[520px] rounded-full bg-roxo-400/50 blur-[130px]" />
-          <div className="absolute bottom-0 -left-32 size-[420px] rounded-full bg-ciano/25 blur-[130px]" />
+          <div className="absolute -top-80 -right-52 size-[900px] bg-[radial-gradient(closest-side,rgb(124_107_208/0.55),transparent)]" />
+          <div className="absolute -bottom-52 -left-72 size-[800px] bg-[radial-gradient(closest-side,rgb(0_172_200/0.25),transparent)]" />
         </div>
 
         <div className="container-page relative grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">

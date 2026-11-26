@@ -143,7 +143,7 @@ export function Abordagem() {
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-[30%] left-1/2 aspect-square w-[130%] -translate-x-1/2 rounded-full border border-white/10" />
         <div className="absolute -top-[10%] left-1/2 aspect-square w-[95%] -translate-x-1/2 rounded-full border border-white/10" />
-        <div className="absolute top-0 right-0 size-[520px] translate-x-1/3 -translate-y-1/3 rounded-full bg-roxo-400/40 blur-[120px]" />
+        <div className="absolute -top-[420px] -right-[420px] size-[1000px] bg-[radial-gradient(closest-side,rgb(124_107_208/0.45),transparent)]" />
       </div>
 
       <div ref={wrap} className="relative" style={pin ? { height: height! } : undefined}>

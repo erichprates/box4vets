@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS=--max-http-header-size=65536 next dev",
     "build": "next build",
     "start": "next start",
     "build:pages": "NEXT_PUBLIC_BASE_PATH=/box4vets NEXT_PUBLIC_SITE_URL=https://erichprates.github.io/box4vets NEXT_PUBLIC_NOINDEX=1 next build"

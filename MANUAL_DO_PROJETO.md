@@ -4,7 +4,7 @@ Site da Box4Vets para médicos-veterinários: uma página longa (home), um blog 
 estática de prévia para o cliente. Este documento registra o estado do projeto, as decisões
 já tomadas, como publicar e o que ainda está pendente.
 
-Atualizado em 26/11/2026.
+Atualizado em 27/11/2026.
 
 ---
 
@@ -14,11 +14,17 @@ Atualizado em 26/11/2026.
 |---|---|
 | Prévia para o cliente | https://erichprates.github.io/box4vets/ |
 | Código-fonte | https://github.com/erichprates/box4vets (branch `main`) |
-| Desenvolvimento local | `npm run dev` e abrir http://localhost:3000 |
+| Desenvolvimento local | `npm run dev -- -p 3210` e abrir http://localhost:3210 (o Box4Pets Criador usa a 3211) |
 | Domínio final previsto | https://box4vets.com.br (definido em `src/content/site.ts`) |
 
 A prévia sai **fora dos buscadores** (`noindex` e `robots.txt` fechado). A versão do domínio
 final sai liberada.
+
+O script `dev` já sobe com `NODE_OPTIONS=--max-http-header-size=65536`. Sem isso o
+`localhost` pode responder erro 431, por causa dos cookies acumulados de outros projetos.
+
+Site irmão: **Box4Pets Criador**, em `../box4pets_criador`, criado a partir desta base
+(mesmo design system e animações). Tem manual próprio.
 
 ## 2. Origem do conteúdo e da aparência
 
@@ -66,7 +72,7 @@ Para mudar um texto, quase sempre basta editar `src/content/site.ts`.
 4. `TestesIntro` (`#testes`): abertura com ícones em órbita
 5. `Doencas` (`#doencas`): explorador dos seis painéis genéticos
 6. `Laudos` (`#laudos`): três laudos-modelo com visualizador
-7. `FaixaVideo`: vídeo do laboratório em tela cheia, com frase no centro
+7. `FaixaVideo`: vídeo do laboratório em tela cheia, com o logo e a frase no centro
 8. `Oncoscan` (`#oncoscan`): comparação OncoScan × Compact e abas de detalhes
 9. `IhcRna` (`#ihc-rna`): comparador de critérios e gráfico de expressão gênica
 10. `Portfolio` (`#portfolio`): tabela de exames com filtro
@@ -160,6 +166,12 @@ O roxo e o ciano são os do logo (`public/logo.svg`).
 - A tabela de exames vira cartões, com rótulo em cada dado.
 - Brilhos de fundo são degradês radiais, não filtros de desfoque (pesavam no celular).
 
+### Faixa de vídeo do laboratório
+- Logo acima da frase.
+- O enquadramento puxa para a direita da imagem (78%), onde estão a pesquisadora e o
+  microscópio; no centro eles ficavam cortados. A versão de celular é um recorte do lado
+  direito do vídeo.
+
 ### Outras
 - "Ver laudo completo" abre um visualizador na página, com setas entre os três laudos.
 - O gráfico de expressão gênica é um painel escuro, com os genes entrando um por vez.
@@ -172,9 +184,9 @@ O roxo e o ciano são os do logo (`public/logo.svg`).
 |---|---|---|
 | `hero-dna.mp4` (+ `-mobile`, `.jpg`) | Storyblocks | Fundo do hero |
 | `hero-coleta.mp4` (+ `-mobile`, `.jpg`) | Vídeo do cliente (`dog.mp4`), recortado | Box do hero |
-| `lab.mp4` (+ `-mobile`, `.jpg`) | Storyblocks, primeiros 6s | Faixa antes do OncoScan |
+| `lab.mp4` (+ `-mobile`, `.jpg`) | Storyblocks, primeiros 6s. A versão `-mobile` é o lado direito do quadro | Faixa antes do OncoScan |
 | `story-gato.mp4`, `story-cao.mp4` (+ `.jpg`) | Banco de vídeo, 6s cada | Stories em Vantagens |
-| `coleta.jpg`, `kit.jpg` | Fotos do cliente | Faixa de Implementar; `kit.jpg` está sem uso |
+| `coleta.jpg`, `kit.jpg` | Fotos do cliente | Faixa de Implementar; `kit.jpg` está sem uso aqui (é usada no Box4Pets Criador) |
 | `laudo-*.jpg` | Laudos-modelo do cliente | Seção de laudos e submenu |
 | `inovacao-*.jpg`, `abordagem-*.jpg`, `blog-*.jpg` | Geradas por IA (Higgsfield) | Cards e capas do blog |
 
@@ -255,3 +267,4 @@ na prévia.
 
 **27/11/2026**
 - Faixa de vídeo do laboratório: enquadramento puxado para a direita da imagem (78%), para a pesquisadora e o microscópio aparecerem; a versão de celular (`lab-mobile.mp4`) foi recortada de novo pelo lado direito. Logo acima da frase.
+- Manual revisto: endereço local, site irmão, faixa de vídeo e mídia.

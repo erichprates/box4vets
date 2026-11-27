@@ -72,7 +72,8 @@ export function FaixaVideo() {
               "Toda a análise é feita",
               "\n",
               "em nossos laboratórios.",
-              "\n",
+              // "\n\n" quebra a linha tambem no celular: a frase de apoio fica sempre sozinha embaixo.
+              "\n\n",
               { text: "Você coleta, envia e recebe o laudo online.", className: "mt-[0.5em] text-[0.58em] font-light text-ciano-200" },
             ]}
           />

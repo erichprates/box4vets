@@ -252,3 +252,6 @@ na prévia.
 - Código publicado no GitHub e prévia no GitHub Pages.
 - Hero: parágrafo movido para baixo do box também no desktop; box mais alto na dobra.
 - Criado o site irmão Box4Pets Criador (`../box4pets_criador`) a partir desta base.
+
+**27/11/2026**
+- Faixa de vídeo do laboratório: enquadramento puxado para a direita da imagem (78%), para a pesquisadora e o microscópio aparecerem; a versão de celular (`lab-mobile.mp4`) foi recortada de novo pelo lado direito. Logo acima da frase.

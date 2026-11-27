@@ -80,7 +80,7 @@ Para mudar um texto, quase sempre basta editar `src/content/site.ts`.
 12. `Implementar` (`#implementar`): faixa com a foto da coleta e os cinco passos
 13. `Blog` (`#blog`): três matérias
 14. `Faq` (`#faq`)
-15. `Contato` (`#contato`): chamada final, formulário e rodapé
+15. `Contato` (`#contato`): chamada final, formulário e rodapé (discreto: logo e informações centralizados, sem menu)
 
 ## 5. Design system
 
@@ -270,3 +270,4 @@ na prévia.
 - Manual revisto: endereço local, site irmão, faixa de vídeo e mídia.
 - Faixa do laboratório: a frase de apoio fica sempre sozinha na linha de baixo, também no celular.
 - "Como funciona a abordagem" no celular: a foto de cada card ficou mais alta (proporção 5:4,4 em vez de uma faixa de 176px), porque as fotos são verticais e eram muito cortadas.
+- Rodapé: saiu o cartão branco com o menu. Agora é uma linha fina, o logo branco pequeno, o copyright e o link do site, centralizados sobre o painel roxo.

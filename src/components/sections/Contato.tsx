@@ -3,7 +3,7 @@
 import { asset } from "@/lib/base";
 import { motion } from "framer-motion";
 import { useState, type FormEvent } from "react";
-import { contatos, links, nav } from "@/content/site";
+import { contatos, links } from "@/content/site";
 import { ease, viewport } from "@/lib/motion";
 import { FadeUp } from "../motion/FadeUp";
 import { Words } from "../motion/Words";
@@ -157,31 +157,24 @@ export function Contato({ base = "" }: { base?: string }) {
           </FadeUp>
         </div>
 
-        <footer className="container-page relative mt-20 md:mt-28">
-          <div className="rounded-[22px] bg-white text-ink">
-            <div className="flex flex-col gap-8 p-7 md:flex-row md:items-center md:justify-between md:p-10">
-              <a href={to("#topo")} aria-label="Voltar ao topo" className="flex items-center gap-2">
-                <Logo className="h-11 w-auto" />
-              </a>
-              <nav aria-label="Rodapé" className="flex flex-wrap gap-x-7 gap-y-3 text-[0.9375rem] text-mute">
-                {nav.map((item) => (
-                  <a key={item.href} href={to(item.href)} className="transition-colors hover:text-roxo">
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </div>
-            <div className="flex flex-wrap justify-between gap-3 border-t border-line px-7 py-5 text-[0.875rem] text-mute md:px-10">
+        {/* Rodape discreto: sem menu e sem cartao branco, so o logo e as informacoes, centralizados. */}
+        <footer className="container-page relative mt-16 md:mt-24">
+          <div className="flex flex-col items-center gap-4 border-t border-white/15 pt-8 pb-5 text-center">
+            <a href={to("#topo")} aria-label="Voltar ao topo" className="text-white/90 transition-opacity hover:opacity-70">
+              <Logo mono className="h-8 w-auto" />
+            </a>
+            <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.8125rem] text-white/60">
               <span>© Copyright 2026 Ridge Research LLC</span>
+              <span aria-hidden className="size-1 rounded-full bg-white/30 max-sm:hidden" />
               <a
                 href={links.site}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center gap-1 font-medium text-roxo"
+                className="inline-flex items-center gap-1 text-white/80 transition-colors hover:text-white"
               >
-                box4vets.com.br <ArrowUpRight size={14} />
+                box4vets.com.br <ArrowUpRight size={13} />
               </a>
-            </div>
+            </p>
           </div>
         </footer>
       </div>

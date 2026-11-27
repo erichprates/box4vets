@@ -24,13 +24,13 @@ function Card({ item, dark, pin }: { item: (typeof abordagem)[number]; dark: boo
       } ${dark ? "bg-ink text-white ring-1 ring-ciano-200/40" : "bg-white text-ink"}`}
     >
       <div
-        className={`relative flex min-h-[250px] shrink-0 flex-col justify-between overflow-hidden rounded-[14px] p-4 max-sm:min-h-0 max-sm:h-44 sm:w-[190px] ${
+        className={`relative flex min-h-[250px] shrink-0 flex-col justify-between overflow-hidden rounded-[14px] p-4 max-sm:aspect-[5/4.4] max-sm:min-h-0 sm:w-[190px] ${
           dark ? "bg-gradient-to-b from-ciano to-roxo" : "grad-card"
         }`}
       >
         {item.foto && (
           <>
-            <Image src={item.foto} alt="" fill sizes="(min-width: 640px) 240px, 92vw" className="object-cover transition-transform duration-[1200ms] ease-out-expo group-hover:scale-110" />
+            <Image src={item.foto} alt="" fill sizes="(min-width: 640px) 240px, 92vw" className="object-cover transition-transform duration-[1200ms] ease-out-expo group-hover:scale-110 max-sm:object-[50%_32%]" />
             <span className="absolute inset-0 bg-gradient-to-b from-ink/55 via-transparent to-ink/35" />
           </>
         )}

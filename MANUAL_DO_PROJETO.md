@@ -268,3 +268,5 @@ na prévia.
 **27/11/2026**
 - Faixa de vídeo do laboratório: enquadramento puxado para a direita da imagem (78%), para a pesquisadora e o microscópio aparecerem; a versão de celular (`lab-mobile.mp4`) foi recortada de novo pelo lado direito. Logo acima da frase.
 - Manual revisto: endereço local, site irmão, faixa de vídeo e mídia.
+- Faixa do laboratório: a frase de apoio fica sempre sozinha na linha de baixo, também no celular.
+- "Como funciona a abordagem" no celular: a foto de cada card ficou mais alta (proporção 5:4,4 em vez de uma faixa de 176px), porque as fotos são verticais e eram muito cortadas.

@@ -171,13 +171,14 @@ export function Abordagem() {
             </FadeUp>
           </div>
 
+          {/* Os quatro cards tem sempre a mesma altura (a do mais alto), no desktop. */}
           <motion.div
             ref={track}
             style={pin ? { x } : undefined}
             className={
               pin
-                ? "flex w-max items-start gap-5 px-[max(1.25rem,calc((100vw-1240px)/2+2.5rem))] will-change-transform"
-                : "container-page grid items-start gap-5 md:grid-cols-2"
+                ? "flex w-max items-stretch gap-5 px-[max(1.25rem,calc((100vw-1240px)/2+2.5rem))] will-change-transform"
+                : "container-page grid items-start gap-5 md:grid-cols-2 md:items-stretch"
             }
           >
             {abordagem.map((item, i) => (

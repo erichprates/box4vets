@@ -271,3 +271,4 @@ na prévia.
 - Faixa do laboratório: a frase de apoio fica sempre sozinha na linha de baixo, também no celular.
 - "Como funciona a abordagem" no celular: a foto de cada card ficou mais alta (proporção 5:4,4 em vez de uma faixa de 176px), porque as fotos são verticais e eram muito cortadas.
 - Rodapé: saiu o cartão branco com o menu. Agora é uma linha fina, o logo branco pequeno, o copyright e o link do site, centralizados sobre o painel roxo.
+- "Como funciona a abordagem" no desktop: os quatro cards têm sempre a mesma altura (a do mais alto). Ao abrir "Ver exames" em um deles, os outros acompanham.
